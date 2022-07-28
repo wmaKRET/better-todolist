@@ -16,6 +16,16 @@ const List = () => {
         setTasks(prevTasks => [...prevTasks, createTask(inputValue)])
     }
 
+    const deleteCompletedTasks = () => {
+        setTasks(prevTasks => prevTasks
+            .filter(task => !task.isCompleted)
+        )
+    }
+
+    const deleteAllTasks = () => {
+        setTasks([])
+    }
+
     const toggleCompleted = (taskID) => {
         setTasks(prevTasks => prevTasks
             .map(task => task.id === taskID
@@ -35,6 +45,8 @@ const List = () => {
         <div className="task-list">
             <TasksListMenu
                 addTask={addTask}
+                deleteCompletedTasks={deleteCompletedTasks}
+                deleteAllTasks={deleteAllTasks}
             />
             <TasksListContainer
                 tasks={tasks}

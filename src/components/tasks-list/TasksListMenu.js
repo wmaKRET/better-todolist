@@ -2,7 +2,7 @@ import { useState } from "react"
 
 import { MdKeyboardArrowDown } from "react-icons/md"
 
-const TasksListMenu = ({ addTask }) => {
+const TasksListMenu = ({ addTask, deleteCompletedTasks, deleteAllTasks }) => {
     const [inputValue, setInputValue] = useState('')
 
     const handleChange = (event) => {
@@ -13,6 +13,14 @@ const TasksListMenu = ({ addTask }) => {
     const handleAddBtn = (taskValue) => {
         addTask(taskValue)
         setInputValue('')
+    }
+
+    const handleClearCompletedBtn = () => {
+        deleteCompletedTasks()
+    }
+
+    const handleClearAllBtn = () => {
+        deleteAllTasks()
     }
 
     return (
@@ -38,11 +46,13 @@ const TasksListMenu = ({ addTask }) => {
             </button>
             <button
                 className="task-list__menu-btn"
+                onClick={handleClearCompletedBtn}
             >
                 CLEAR COMPLETED
             </button>
             <button
                 className="task-list__menu-btn"
+                onClick={handleClearAllBtn}
             >
                 CLEAR ALL
             </button>
