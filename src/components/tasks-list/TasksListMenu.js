@@ -3,6 +3,7 @@ import { useState } from "react"
 import { MdKeyboardArrowDown } from "react-icons/md"
 
 const TasksListMenu = ({ addTask, deleteCompletedTasks, deleteAllTasks }) => {
+    const TIMEOUT_IN_MS = 1000
     const DEFAULT_ALERT = {
         message: "What needs to be done?",
         action: ''
@@ -10,40 +11,52 @@ const TasksListMenu = ({ addTask, deleteCompletedTasks, deleteAllTasks }) => {
 
     const [inputValue, setInputValue] = useState("")
     const [alert, setAlert] = useState(DEFAULT_ALERT)
+    const [AreButtonsDisabled, setAreButtonsDisabled] = useState(false)
 
     const handleChange = (event) => {
         const { value } = event.target
         setInputValue(value)
     }
 
-    const displayAlertAndDisableBtn = (alertMessage, alertAction, buttonClicked) => {
+    const displayAlert = (alertMessage, alertAction) => {
+        setAlert({
+            message: alertMessage,
+            action: alertAction
+        })
         setTimeout(() => {
-            buttonClicked.disabled = true
-            setAlert({
-                message: alertMessage,
-                action: alertAction
-            })
-        }, 0)
-        setTimeout(() => {
-            buttonClicked.disabled = false
             setAlert(DEFAULT_ALERT)
-        }, 2000)
+        }, TIMEOUT_IN_MS)
     }
 
-    const handleAddBtn = (event, taskValue) => {
-        addTask(taskValue)
-        setInputValue("")
-        displayAlertAndDisableBtn("Task added to list.", "success", event.target)
+    const disableButtons = () => {
+        setAreButtonsDisabled(true)
+        setTimeout(() => {
+            setAreButtonsDisabled(false)
+        }, TIMEOUT_IN_MS)
     }
 
-    const handleClearCompletedBtn = (event) => {
+    const handleAddBtn = (valueFromInput) => {
+        if (inputValue.length !== 0) {
+            disableButtons()
+            displayAlert("Task added to list.", "success")
+            addTask(valueFromInput)
+            setInputValue("")
+        } else {
+            disableButtons()
+            displayAlert("Input is empty.", "failure")
+        }
+    }
+
+    const handleClearCompletedBtn = () => {
+        disableButtons()
+        displayAlert("Completed tasks deleted.", "info")
         deleteCompletedTasks()
-        displayAlertAndDisableBtn("Completed tasks deleted.", "info", event.target)
     }
 
-    const handleClearAllBtn = (event) => {
+    const handleClearAllBtn = () => {
+        disableButtons()
+        displayAlert("Tasks deleted.", "info")
         deleteAllTasks()
-        displayAlertAndDisableBtn("Tasks deleted.", "info", event.target)
     }
 
     return (
@@ -63,19 +76,22 @@ const TasksListMenu = ({ addTask, deleteCompletedTasks, deleteAllTasks }) => {
             ></input>
             <button
                 className="task-list__menu-btn"
-                onClick={(event) => handleAddBtn(event, inputValue)}
+                onClick={() => handleAddBtn(inputValue)}
+                disabled={AreButtonsDisabled}
             >
                 ADD TASK
             </button>
             <button
                 className="task-list__menu-btn"
                 onClick={handleClearCompletedBtn}
+                disabled={AreButtonsDisabled}
             >
                 CLEAR COMPLETED
             </button>
             <button
                 className="task-list__menu-btn"
                 onClick={handleClearAllBtn}
+                disabled={AreButtonsDisabled}
             >
                 CLEAR ALL
             </button>
