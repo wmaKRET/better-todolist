@@ -23,7 +23,7 @@ const TasksListItem = ({ task, toggleCompleted, deleteTask }) => {
                 onClick={() => toggleCompleted(task.id)}
             >
                 {isTaskCompletedIcon()}
-            <p className={task.isCompleted ? 'completed-task' : ''}>{task.value}</p>
+                <p className={task.isCompleted ? 'completed-task' : ''}>{task.value}</p>
             </div>
             <div
                 className="task-list__list-item-delete"

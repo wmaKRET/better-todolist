@@ -3,31 +3,54 @@ import { useState } from "react"
 import { MdKeyboardArrowDown } from "react-icons/md"
 
 const TasksListMenu = ({ addTask, deleteCompletedTasks, deleteAllTasks }) => {
-    const [inputValue, setInputValue] = useState('')
+    const DEFAULT_ALERT = {
+        message: "What needs to be done?",
+        action: ''
+    }
+
+    const [inputValue, setInputValue] = useState("")
+    const [alert, setAlert] = useState(DEFAULT_ALERT)
 
     const handleChange = (event) => {
         const { value } = event.target
         setInputValue(value)
     }
 
-    const handleAddBtn = (taskValue) => {
+    const displayAlertAndDisableBtn = (alertMessage, alertAction, buttonClicked) => {
+        setTimeout(() => {
+            buttonClicked.disabled = true
+            setAlert({
+                message: alertMessage,
+                action: alertAction
+            })
+        }, 0)
+        setTimeout(() => {
+            buttonClicked.disabled = false
+            setAlert(DEFAULT_ALERT)
+        }, 2000)
+    }
+
+    const handleAddBtn = (event, taskValue) => {
         addTask(taskValue)
-        setInputValue('')
+        setInputValue("")
+        displayAlertAndDisableBtn("Task added to list.", "success", event.target)
     }
 
-    const handleClearCompletedBtn = () => {
+    const handleClearCompletedBtn = (event) => {
         deleteCompletedTasks()
+        displayAlertAndDisableBtn("Completed tasks deleted.", "info", event.target)
     }
 
-    const handleClearAllBtn = () => {
+    const handleClearAllBtn = (event) => {
         deleteAllTasks()
+        displayAlertAndDisableBtn("Tasks deleted.", "info", event.target)
     }
 
     return (
         <div className="task-list__menu">
             <div className="task-list__menu-msg">
                 <MdKeyboardArrowDown size={28} />
-                <p id="task-list-msg">What needs to be done?</p>
+                <p className={`task-list__menu-msg-${alert.action}`}>{alert.message}</p>
                 <MdKeyboardArrowDown size={28} />
             </div>
             <input
@@ -40,7 +63,7 @@ const TasksListMenu = ({ addTask, deleteCompletedTasks, deleteAllTasks }) => {
             ></input>
             <button
                 className="task-list__menu-btn"
-                onClick={() => handleAddBtn(inputValue)}
+                onClick={(event) => handleAddBtn(event, inputValue)}
             >
                 ADD TASK
             </button>
