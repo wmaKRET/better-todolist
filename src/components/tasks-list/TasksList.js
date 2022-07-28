@@ -17,21 +17,29 @@ const List = () => {
     }
 
     const toggleCompleted = (taskID) => {
-        setTasks(prevTasks => prevTasks.map(task => {
-            return task.id === taskID
-                ? {...task, isCompleted: !task.isCompleted}
+        setTasks(prevTasks => prevTasks
+            .map(task => task.id === taskID
+                ? { ...task, isCompleted: !task.isCompleted }
                 : task
-        }))
+            )
+        )
+    }
+
+    const deleteTask = (taskID) => {
+        setTasks(prevTasks => prevTasks
+            .filter(task => task.id !== taskID)
+        )
     }
 
     return (
         <div className="task-list">
-            <TasksListMenu 
-                addTask={addTask} 
+            <TasksListMenu
+                addTask={addTask}
             />
-            <TasksListContainer 
-                tasks={tasks} 
+            <TasksListContainer
+                tasks={tasks}
                 toggleCompleted={toggleCompleted}
+                deleteTask={deleteTask}
             />
         </div>
     )

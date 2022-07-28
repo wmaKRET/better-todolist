@@ -1,11 +1,12 @@
 import TasksListItem from "./TasksListItem"
 
-const TasksListContainer = ({ tasks, toggleCompleted }) => {
+const TasksListContainer = ({ tasks, toggleCompleted, deleteTask }) => {
     const taskElements = tasks.map(item => (
         <TasksListItem 
             key={item.id} 
             task={item} 
             toggleCompleted={toggleCompleted}
+            deleteTask={deleteTask}
         />
     ))
 
