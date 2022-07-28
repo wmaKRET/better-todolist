@@ -72,7 +72,8 @@
             border-bottom: 2px solid $light;
             transition: $transition;
 
-            &-radiobtn, &-delete {
+            &-radiobtn,
+            &-delete {
                 cursor: pointer;
             }
 

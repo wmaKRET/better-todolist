@@ -51,7 +51,7 @@ const TasksMenu = ({ numberOfTasks, numberOfCompletedTasks, addTask, deleteCompl
         if (numberOfCompletedTasks > 0) {
             disableButtons()
             displayAlert(
-                numberOfCompletedTasks === 1 
+                numberOfCompletedTasks === 1
                     ? `${numberOfCompletedTasks} task deleted`
                     : `${numberOfCompletedTasks} tasks deleted`,
                 "info")
@@ -66,9 +66,9 @@ const TasksMenu = ({ numberOfTasks, numberOfCompletedTasks, addTask, deleteCompl
         if (numberOfTasks > 0) {
             disableButtons()
             displayAlert(
-                numberOfTasks === 1 
+                numberOfTasks === 1
                     ? `${numberOfTasks} task deleted`
-                    : `${numberOfTasks} tasks deleted`, 
+                    : `${numberOfTasks} tasks deleted`,
                 "info"
             )
             deleteAllTasks()
