@@ -16,12 +16,10 @@ const List = () => {
         setTasks(prevTasks => [...prevTasks, createTask(inputValue)])
     }
 
-    console.log(tasks)
-
     return (
         <div className="task-list">
-            <TasksListMenu addTask={addTask}/>
-            <TasksListContainer />
+            <TasksListMenu addTask={addTask} />
+            <TasksListContainer tasks={tasks} />
         </div>
     )
 }

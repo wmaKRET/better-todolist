@@ -1,14 +1,22 @@
 import TasksListItem from "./TasksListItem"
 
-const TasksListContainer = () => {
+const TasksListContainer = ({ tasks }) => {
+    const taskElements = tasks.map(item => (
+        <TasksListItem key={item.id} task={item}/>
+    ))
+
     return (
         <div className="task-list__list">
-            <p 
+            <p
                 className="task-list__list-remaining"
             >
-                3 tasks remaining
+                {
+                    tasks.length === 1 
+                        ? `${tasks.length} task remaining`
+                        : `${tasks.length} tasks remaining`
+                }
             </p>
-            <TasksListItem />
+            {taskElements}
         </div>
     )
 }

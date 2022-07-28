@@ -7,11 +7,15 @@ import {
     RiDeleteBin2Fill
 } from "react-icons/ri"
 
-const TasksListItem = () => {
+const TasksListItem = ({ task }) => {
     return (
         <div className="task-list__list-item">
-            <MdOutlineRadioButtonUnchecked />
-            <p>task 1</p>
+            {
+                task.isCompleted 
+                    ? <MdOutlineRadioButtonUnchecked />
+                    : <MdOutlineRadioButtonChecked />
+            }            
+            <p>{task.value}</p>
             <RiDeleteBin2Line />
         </div>
     )
