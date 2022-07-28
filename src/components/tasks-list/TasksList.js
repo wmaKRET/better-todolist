@@ -1,16 +1,9 @@
-import "./tasksList.scss"
+import TasksListMenu from "./TasksListMenu"
 
 const List = () => {
     return (
         <div className="task-list">
-            <div className="task-list__panel">
-                <div className="task-list__panel-add-task">
-                    <input placeholder="Write task..."></input>
-                    <button>add task</button>
-                </div>
-                <button>remove completed</button>
-                <button>clear list</button>
-            </div>
+            <TasksListMenu />
             <div className="task-list__list">
                 <div>3 tasks remaining</div>
                 <div>task 1</div>

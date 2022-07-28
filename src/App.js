@@ -2,7 +2,7 @@ import List from "./components/tasks-list/TasksList"
 import "./scss/app.scss"
 
 const App = () => (
-  <div>
+  <div className="container">
     <List />
   </div>
 )

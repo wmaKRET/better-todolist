@@ -29,3 +29,12 @@ button {
         color: $white;
     }
 }
+
+.container {
+    width: 90%;
+    margin: 1em auto;
+    display: flex;
+    flex-direction: column;
+}
+
+@import "./components/tasksList"
