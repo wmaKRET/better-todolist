@@ -10,6 +10,7 @@
         &-msg {
             display: flex;
             justify-content: space-between;
+            cursor: default;
 
             & p {
                 margin: 0 1em;
@@ -29,6 +30,26 @@
         &-btn {
             width: 80%;
             margin: 0.5em auto;
+        }
+    }
+
+    &__list {
+        margin-top: 2em;
+        display: flex;
+        flex-direction: column;
+
+        &-remaining {
+            margin: 0.25em 0;
+            text-align: center;
+            cursor: default;
+        }
+
+        &-item {
+            padding: 0.5em 0;
+            display: flex;
+            justify-content: space-between;
+            color: white;
+            border-top: 2px solid $light;
         }
     }
 }

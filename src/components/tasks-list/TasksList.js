@@ -1,15 +1,11 @@
 import TasksListMenu from "./TasksListMenu"
+import TasksListContainer from "./TasksListContainer"
 
 const List = () => {
     return (
         <div className="task-list">
             <TasksListMenu />
-            <div className="task-list__list">
-                <div>3 tasks remaining</div>
-                <div>task 1</div>
-                <div>task 2</div>
-                <div>task 3</div>
-            </div>
+            <TasksListContainer />
         </div>
     )
 }
