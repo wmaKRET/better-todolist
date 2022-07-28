@@ -1,6 +1,9 @@
+import List from "./components/tasks-list/TasksList"
+import "./app.scss"
+
 const App = () => (
   <div>
-    <h1>hello world</h1>
+    <List />
   </div>
 )
 
