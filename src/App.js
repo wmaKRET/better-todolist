@@ -1,5 +1,5 @@
 import List from "./components/tasks-list/TasksList"
-import "./app.scss"
+import "./scss/app.scss"
 
 const App = () => (
   <div>

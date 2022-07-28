@@ -1,0 +1,31 @@
+@import "variables";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: $background;
+    color: $light;
+}
+
+button {
+    padding: 0.5em 1em;
+    background-color: transparent;
+    color: $light;
+    border: solid 2px $color;
+    border-radius: 0.5em;
+    transition: $transition;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $color;
+        color: $white;
+    }
+}
