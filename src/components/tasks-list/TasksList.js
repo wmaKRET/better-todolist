@@ -16,10 +16,23 @@ const List = () => {
         setTasks(prevTasks => [...prevTasks, createTask(inputValue)])
     }
 
+    const toggleCompleted = (taskID) => {
+        setTasks(prevTasks => prevTasks.map(task => {
+            return task.id === taskID
+                ? {...task, isCompleted: !task.isCompleted}
+                : task
+        }))
+    }
+
     return (
         <div className="task-list">
-            <TasksListMenu addTask={addTask} />
-            <TasksListContainer tasks={tasks} />
+            <TasksListMenu 
+                addTask={addTask} 
+            />
+            <TasksListContainer 
+                tasks={tasks} 
+                toggleCompleted={toggleCompleted}
+            />
         </div>
     )
 }

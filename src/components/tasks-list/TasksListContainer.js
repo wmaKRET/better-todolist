@@ -1,8 +1,12 @@
 import TasksListItem from "./TasksListItem"
 
-const TasksListContainer = ({ tasks }) => {
+const TasksListContainer = ({ tasks, toggleCompleted }) => {
     const taskElements = tasks.map(item => (
-        <TasksListItem key={item.id} task={item}/>
+        <TasksListItem 
+            key={item.id} 
+            task={item} 
+            toggleCompleted={toggleCompleted}
+        />
     ))
 
     return (
@@ -11,7 +15,7 @@ const TasksListContainer = ({ tasks }) => {
                 className="task-list__list-remaining"
             >
                 {
-                    tasks.length === 1 
+                    tasks.length === 1
                         ? `${tasks.length} task remaining`
                         : `${tasks.length} tasks remaining`
                 }
