@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react"
 
-import TasksListMenu from "./TasksListMenu"
-import TasksListContainer from "./TasksListContainer"
+import TasksMenu from "./TasksMenu"
+import TasksList from "./TasksList"
 
-const List = () => {
-    const [tasks, setTasks] = useState([])
+const Tasks = () => {
+    const [tasksArray, setTasksArray] = useState([])
     const [numberOfCompletedTasks, setNumberOfCompletedTasks] = useState(0)
 
     useEffect(() => {
-        const completedTasks = tasks.filter(task => task.isCompleted)
+        const completedTasks = tasksArray.filter(task => task.isCompleted)
         setNumberOfCompletedTasks(completedTasks.length)
-    }, [tasks])
+    }, [tasksArray])
 
     const createTask = (inputValue) => ({
         id: Date.now().toString(),
@@ -19,21 +19,21 @@ const List = () => {
     })
 
     const addTask = (inputValue) => {
-        setTasks(prevTasks => [...prevTasks, createTask(inputValue)])
+        setTasksArray(prevTasks => [...prevTasks, createTask(inputValue)])
     }
 
     const deleteCompletedTasks = () => {
-        setTasks(prevTasks => prevTasks
+        setTasksArray(prevTasks => prevTasks
             .filter(task => !task.isCompleted)
         )
     }
 
     const deleteAllTasks = () => {
-        setTasks([])
+        setTasksArray([])
     }
 
     const toggleCompleted = (taskID) => {
-        setTasks(prevTasks => prevTasks
+        setTasksArray(prevTasks => prevTasks
             .map(task => task.id === taskID
                 ? { ...task, isCompleted: !task.isCompleted }
                 : task
@@ -42,23 +42,23 @@ const List = () => {
     }
 
     const deleteTask = (taskID) => {
-        setTasks(prevTasks => prevTasks
+        setTasksArray(prevTasks => prevTasks
             .filter(task => task.id !== taskID)
         )
     }
 
     return (
-        <div className="task-list">
-            <TasksListMenu
-                numberOfTasks={tasks.length}
+        <div className="tasks">
+            <TasksMenu
+                numberOfTasks={tasksArray.length}
                 numberOfCompletedTasks={numberOfCompletedTasks}
                 addTask={addTask}
                 deleteCompletedTasks={deleteCompletedTasks}
                 deleteAllTasks={deleteAllTasks}
             />
-            <TasksListContainer
-                tasks={tasks}
-                numberOfTasksRemaining={tasks.length - numberOfCompletedTasks}
+            <TasksList
+                tasksArray={tasksArray}
+                numberOfTasksRemaining={tasksArray.length - numberOfCompletedTasks}
                 toggleCompleted={toggleCompleted}
                 deleteTask={deleteTask}
             />
@@ -66,4 +66,4 @@ const List = () => {
     )
 }
 
-export default List
+export default Tasks

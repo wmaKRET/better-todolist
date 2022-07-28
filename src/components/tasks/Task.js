@@ -9,10 +9,10 @@ import {
     RiDeleteBin2Fill
 } from "react-icons/ri"
 
-const TasksListItem = ({ task, toggleCompleted, deleteTask }) => {
+const Task = ({ taskObj, toggleCompleted, deleteTask }) => {
     const [hovered, ref] = useHover()
 
-    const isTaskCompletedIcon = () => task.isCompleted
+    const isTaskCompletedIcon = () => taskObj.isCompleted
         ? <MdOutlineRadioButtonChecked />
         : <MdOutlineRadioButtonUnchecked />
 
@@ -22,21 +22,21 @@ const TasksListItem = ({ task, toggleCompleted, deleteTask }) => {
 
     return (
         <div
-            className={task.isCompleted
-                ? "task-list__list-item task-list__list-item-completed"
-                : "task-list__list-item"
+            className={taskObj.isCompleted
+                ? "tasks__list-item tasks__list-item-completed"
+                : "tasks__list-item"
             }>
             <div
-                className="task-list__list-item-radiobtn"
-                onClick={() => toggleCompleted(task.id)}
+                className="tasks__list-item-radiobtn"
+                onClick={() => toggleCompleted(taskObj.id)}
             >
                 {isTaskCompletedIcon()}
-                <p className={task.isCompleted ? 'completed-task' : ''}>{task.value}</p>
+                <p className={taskObj.isCompleted ? 'completed-task' : ''}>{taskObj.value}</p>
             </div>
             <div
-                className="task-list__list-item-delete"
+                className="tasks__list-item-delete"
                 ref={ref}
-                onClick={() => deleteTask(task.id)}
+                onClick={() => deleteTask(taskObj.id)}
             >
                 {isTrashBinHoveredIcon()}
             </div>
@@ -44,4 +44,4 @@ const TasksListItem = ({ task, toggleCompleted, deleteTask }) => {
     )
 }
 
-export default TasksListItem
+export default Task

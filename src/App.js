@@ -1,9 +1,9 @@
-import List from "./components/tasks-list/TasksList"
+import Tasks from "./components/tasks/Tasks"
 import "./scss/app.scss"
 
 const App = () => (
   <div className="container">
-    <List />
+    <Tasks />
   </div>
 )
 

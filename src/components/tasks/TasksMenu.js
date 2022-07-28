@@ -2,7 +2,7 @@ import { useState } from "react"
 
 import { MdKeyboardArrowDown } from "react-icons/md"
 
-const TasksListMenu = ({ numberOfTasks, numberOfCompletedTasks, addTask, deleteCompletedTasks, deleteAllTasks }) => {
+const TasksMenu = ({ numberOfTasks, numberOfCompletedTasks, addTask, deleteCompletedTasks, deleteAllTasks }) => {
     const TIMEOUT_IN_MS = 1000
     const DEFAULT_ALERT = {
         message: "What needs to be done?",
@@ -79,36 +79,36 @@ const TasksListMenu = ({ numberOfTasks, numberOfCompletedTasks, addTask, deleteC
     }
 
     return (
-        <div className="task-list__menu">
-            <div className="task-list__menu-msg">
+        <div className="tasks__menu">
+            <div className="tasks__menu-msg">
                 <MdKeyboardArrowDown size={28} />
-                <p className={`task-list__menu-msg-${alert.action}`}>{alert.message}</p>
+                <p className={`tasks__menu-msg-${alert.action}`}>{alert.message}</p>
                 <MdKeyboardArrowDown size={28} />
             </div>
             <input
                 type="text"
-                className="task-list__menu-input"
+                className="tasks__menu-input"
                 placeholder="Write here..."
                 name="inputValue"
                 value={inputValue}
                 onChange={handleChange}
             ></input>
             <button
-                className="task-list__menu-btn"
+                className="tasks__menu-btn"
                 onClick={() => handleAddBtn(inputValue)}
                 disabled={AreButtonsDisabled}
             >
                 ADD TASK
             </button>
             <button
-                className="task-list__menu-btn"
+                className="tasks__menu-btn"
                 onClick={handleClearCompletedBtn}
                 disabled={AreButtonsDisabled}
             >
                 CLEAR COMPLETED
             </button>
             <button
-                className="task-list__menu-btn"
+                className="tasks__menu-btn"
                 onClick={handleClearAllBtn}
                 disabled={AreButtonsDisabled}
             >
@@ -118,4 +118,4 @@ const TasksListMenu = ({ numberOfTasks, numberOfCompletedTasks, addTask, deleteC
     )
 }
 
-export default TasksListMenu
+export default TasksMenu

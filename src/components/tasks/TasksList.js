@@ -1,19 +1,19 @@
-import TasksListItem from "./TasksListItem"
+import Task from "./Task"
 
-const TasksListContainer = ({ tasks, numberOfTasksRemaining, toggleCompleted, deleteTask }) => {
-    const taskElements = tasks.map(item => (
-        <TasksListItem 
+const TasksList = ({ tasksArray, numberOfTasksRemaining, toggleCompleted, deleteTask }) => {
+    const taskElements = tasksArray.map(item => (
+        <Task 
             key={item.id} 
-            task={item} 
+            taskObj={item} 
             toggleCompleted={toggleCompleted}
             deleteTask={deleteTask}
         />
     ))
 
     return (
-        <div className="task-list__list">
+        <div className="tasks__list">
             <p
-                className="task-list__list-remaining"
+                className="tasks__list-remaining"
             >
                 {
                     numberOfTasksRemaining === 1
@@ -26,4 +26,4 @@ const TasksListContainer = ({ tasks, numberOfTasksRemaining, toggleCompleted, de
     )
 }
 
-export default TasksListContainer
+export default TasksList
