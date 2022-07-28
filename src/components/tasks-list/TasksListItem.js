@@ -1,3 +1,5 @@
+import useHover from "../../hooks/useHover"
+
 import {
     MdOutlineRadioButtonUnchecked,
     MdOutlineRadioButtonChecked
@@ -8,9 +10,15 @@ import {
 } from "react-icons/ri"
 
 const TasksListItem = ({ task, toggleCompleted, deleteTask }) => {
+    const [hovered, ref] = useHover()
+
     const isTaskCompletedIcon = () => task.isCompleted
         ? <MdOutlineRadioButtonChecked />
         : <MdOutlineRadioButtonUnchecked />
+
+    const isTrashBinHoveredIcon = () => hovered
+        ? <RiDeleteBin2Fill />
+        : <RiDeleteBin2Line />
 
     return (
         <div
@@ -27,9 +35,10 @@ const TasksListItem = ({ task, toggleCompleted, deleteTask }) => {
             </div>
             <div
                 className="task-list__list-item-delete"
+                ref={ref}
                 onClick={() => deleteTask(task.id)}
             >
-                <RiDeleteBin2Line />
+                {isTrashBinHoveredIcon()}
             </div>
         </div>
     )
