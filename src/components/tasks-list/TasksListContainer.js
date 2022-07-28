@@ -1,11 +1,4 @@
-import {      
-    MdOutlineRadioButtonUnchecked,
-    MdOutlineRadioButtonChecked
-} from "react-icons/md"
-import {
-    RiDeleteBin2Line,
-    RiDeleteBin2Fill
-} from "react-icons/ri"
+import TasksListItem from "./TasksListItem"
 
 const TasksListContainer = () => {
     return (
@@ -15,16 +8,7 @@ const TasksListContainer = () => {
             >
                 3 tasks remaining
             </p>
-            <div className="task-list__list-item">
-                <MdOutlineRadioButtonUnchecked />
-                <p>task 1</p>
-                <RiDeleteBin2Line />
-            </div>
-            <div className="task-list__list-item">
-                <MdOutlineRadioButtonChecked />
-                <p>task 2</p>
-                <RiDeleteBin2Fill />
-            </div>
+            <TasksListItem />
         </div>
     )
 }
