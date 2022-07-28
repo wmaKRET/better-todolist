@@ -1,11 +1,20 @@
 .task-list {
-    margin: 3em 0.5em;
+    margin: 5em 0.5em;
     display: flex;
     flex-direction: column;
 
     &__menu {
         display: flex;
         flex-direction: column;
+
+        &-msg {
+            display: flex;
+            justify-content: space-between;
+
+            & p {
+                margin: 0 1em;
+            }
+        }
 
         &-input {
             height: 50px;
@@ -18,7 +27,8 @@
         }
 
         &-btn {
-            margin: 0.5em 0;
+            width: 80%;
+            margin: 0.5em auto;
         }
     }
 }
