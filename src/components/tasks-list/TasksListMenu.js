@@ -10,6 +10,11 @@ const TasksListMenu = ({ addTask }) => {
         setInputValue(value)
     }
 
+    const handleAddBtn = (taskValue) => {
+        addTask(taskValue)
+        setInputValue('')
+    }
+
     return (
         <div className="task-list__menu">
             <div className="task-list__menu-msg">
@@ -27,7 +32,7 @@ const TasksListMenu = ({ addTask }) => {
             ></input>
             <button
                 className="task-list__menu-btn"
-                onClick={() => addTask(inputValue)}
+                onClick={() => handleAddBtn(inputValue)}
             >
                 ADD TASK
             </button>
