@@ -1,6 +1,15 @@
+import { useState } from "react"
+
 import { MdKeyboardArrowDown } from "react-icons/md"
 
-const TasksListMenu = () => {
+const TasksListMenu = ({ addTask }) => {
+    const [inputValue, setInputValue] = useState('')
+
+    const handleChange = (event) => {
+        const { value } = event.target
+        setInputValue(value)
+    }
+
     return (
         <div className="task-list__menu">
             <div className="task-list__menu-msg">
@@ -9,11 +18,16 @@ const TasksListMenu = () => {
                 <MdKeyboardArrowDown size={28} />
             </div>
             <input
+                type="text"
                 className="task-list__menu-input"
                 placeholder="Write here..."
+                name="inputValue"
+                value={inputValue}
+                onChange={handleChange}
             ></input>
             <button
                 className="task-list__menu-btn"
+                onClick={() => addTask(inputValue)}
             >
                 ADD TASK
             </button>
