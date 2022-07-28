@@ -2,7 +2,7 @@ import { useState } from "react"
 
 import { MdKeyboardArrowDown } from "react-icons/md"
 
-const TasksListMenu = ({ addTask, deleteCompletedTasks, deleteAllTasks }) => {
+const TasksListMenu = ({ numberOfTasks, numberOfCompletedTasks, addTask, deleteCompletedTasks, deleteAllTasks }) => {
     const TIMEOUT_IN_MS = 1000
     const DEFAULT_ALERT = {
         message: "What needs to be done?",
@@ -38,25 +38,44 @@ const TasksListMenu = ({ addTask, deleteCompletedTasks, deleteAllTasks }) => {
     const handleAddBtn = (valueFromInput) => {
         if (inputValue.length !== 0) {
             disableButtons()
-            displayAlert("Task added to list.", "success")
+            displayAlert("Task added to list", "success")
             addTask(valueFromInput)
             setInputValue("")
         } else {
             disableButtons()
-            displayAlert("Input is empty.", "failure")
+            displayAlert("Input is empty", "failure")
         }
     }
 
     const handleClearCompletedBtn = () => {
-        disableButtons()
-        displayAlert("Completed tasks deleted.", "info")
-        deleteCompletedTasks()
+        if (numberOfCompletedTasks > 0) {
+            disableButtons()
+            displayAlert(
+                numberOfCompletedTasks === 1 
+                    ? `${numberOfCompletedTasks} task deleted`
+                    : `${numberOfCompletedTasks} tasks deleted`,
+                "info")
+            deleteCompletedTasks()
+        } else {
+            disableButtons()
+            displayAlert("There are no tasks to delete", "failure")
+        }
     }
 
     const handleClearAllBtn = () => {
-        disableButtons()
-        displayAlert("Tasks deleted.", "info")
-        deleteAllTasks()
+        if (numberOfTasks > 0) {
+            disableButtons()
+            displayAlert(
+                numberOfTasks === 1 
+                    ? `${numberOfTasks} task deleted`
+                    : `${numberOfTasks} tasks deleted`, 
+                "info"
+            )
+            deleteAllTasks()
+        } else {
+            disableButtons()
+            displayAlert("There are no tasks to delete", "failure")
+        }
     }
 
     return (

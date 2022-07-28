@@ -1,10 +1,16 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import TasksListMenu from "./TasksListMenu"
 import TasksListContainer from "./TasksListContainer"
 
 const List = () => {
     const [tasks, setTasks] = useState([])
+    const [numberOfCompletedTasks, setNumberOfCompletedTasks] = useState(0)
+
+    useEffect(() => {
+        const completedTasks = tasks.filter(task => task.isCompleted)
+        setNumberOfCompletedTasks(completedTasks.length)
+    }, [tasks])
 
     const createTask = (inputValue) => ({
         id: Date.now().toString(),
@@ -44,12 +50,15 @@ const List = () => {
     return (
         <div className="task-list">
             <TasksListMenu
+                numberOfTasks={tasks.length}
+                numberOfCompletedTasks={numberOfCompletedTasks}
                 addTask={addTask}
                 deleteCompletedTasks={deleteCompletedTasks}
                 deleteAllTasks={deleteAllTasks}
             />
             <TasksListContainer
                 tasks={tasks}
+                numberOfTasksRemaining={tasks.length - numberOfCompletedTasks}
                 toggleCompleted={toggleCompleted}
                 deleteTask={deleteTask}
             />
