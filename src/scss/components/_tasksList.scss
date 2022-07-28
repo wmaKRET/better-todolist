@@ -57,6 +57,10 @@
                 cursor: pointer;
             }
 
+            &-radiobtn {
+                display: flex;
+            }
+
             & p {
                 margin-left: 0.5em;
                 flex: 1 1;
