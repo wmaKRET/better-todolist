@@ -4,7 +4,7 @@ import useHover from "../../hooks/useHover"
 import { RiDeleteBin2Line, RiDeleteBin2Fill } from "react-icons/ri"
 
 const ListItem = ({ list }) => {
-    const { listsArray, activeListID, toggleActiveList, deleteList } = useContext(Context)
+    const { activeListID, toggleActiveList, deleteList } = useContext(Context)
     const [hovered, ref] = useHover()
 
     const isThisListActive = () => list.id === activeListID
@@ -16,14 +16,12 @@ const ListItem = ({ list }) => {
         : <RiDeleteBin2Line />
 
     const numberOfCompletedTasks = () => {
-        const activeListArray = listsArray.filter(list => list.id === activeListID)
-        const completedTasksArray = activeListArray[0].tasks.filter(task => task.isCompleted)
-        return completedTasksArray.length
+        const unfinishedTasksArray = list.tasks.filter(task => !task.isCompleted)
+        return unfinishedTasksArray.length
     }
 
     const numberOfTasks = () => {
-        const activeListArray = listsArray.filter(list => list.id === activeListID)
-        return activeListArray[0].tasks.length
+        return list.tasks.length
     }
 
     return (
