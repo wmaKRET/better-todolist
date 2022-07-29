@@ -2,7 +2,7 @@ import ListItem from "./ListItem"
 
 const ListsList = ({ listsArray, deleteList }) => {
     const listElements = listsArray.map(list => (
-        <ListItem 
+        <ListItem
             key={list.id}
             listObj={list}
             deleteList={deleteList}

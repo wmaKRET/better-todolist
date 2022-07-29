@@ -19,8 +19,8 @@ const ListItem = ({ listObj, deleteList }) => {
             <div className="lists__list-item__name">
                 <p>{listObj.value}</p>
             </div>
-            <div 
-                ref={ref} 
+            <div
+                ref={ref}
                 className="lists__list-item__delete"
                 onClick={() => deleteList(listObj.id)}
             >
