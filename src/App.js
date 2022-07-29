@@ -6,6 +6,7 @@ import "./scss/app.scss"
 
 const App = () => {
   const [listsArray, setListsArray] = useState([])
+  const [whichListIsActive, setWitchListIsActive] = useState({ id: 0})
 
   const createList = (inputValue) => ({
     id: Date.now().toString(),
@@ -14,7 +15,9 @@ const App = () => {
   })
 
   const addList = (inputValue) => {
-    setListsArray(prevLists => [...prevLists, createList(inputValue)])
+    const newList = createList(inputValue)
+    setListsArray(prevLists => [...prevLists, newList])
+    setWitchListIsActive(newList)
   }
 
   const deleteList = (listID) => {
@@ -26,13 +29,14 @@ const App = () => {
     <>
       <Socials />
       <div className="container">
-        <Lists 
+        <Lists
           listsArray={listsArray}
+          whichListIsActiveID={whichListIsActive.id}
           addList={addList}
           deleteList={deleteList}
         />
-        <Tasks 
-        
+        <Tasks
+          whichListIsActive={whichListIsActive}
         />
       </div>
     </>

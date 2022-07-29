@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import TasksMenu from "./TasksMenu"
 import TasksList from "./TasksList"
 
-const Tasks = () => {
+const Tasks = ({ whichListIsActive }) => {
     const [tasksArray, setTasksArray] = useState([])
     const [numberOfCompletedTasks, setNumberOfCompletedTasks] = useState(0)
 
@@ -48,21 +48,24 @@ const Tasks = () => {
     }
 
     return (
-        <div className="tasks">
-            <TasksMenu
-                numberOfTasks={tasksArray.length}
-                numberOfCompletedTasks={numberOfCompletedTasks}
-                addTask={addTask}
-                deleteCompletedTasks={deleteCompletedTasks}
-                deleteAllTasks={deleteAllTasks}
-            />
-            <TasksList
-                tasksArray={tasksArray}
-                numberOfTasksRemaining={tasksArray.length - numberOfCompletedTasks}
-                toggleCompleted={toggleCompleted}
-                deleteTask={deleteTask}
-            />
-        </div>
+        <>
+            {whichListIsActive.id !== 0 &&
+            <div className="tasks">
+                <TasksMenu
+                    numberOfTasks={tasksArray.length}
+                    numberOfCompletedTasks={numberOfCompletedTasks}
+                    addTask={addTask}
+                    deleteCompletedTasks={deleteCompletedTasks}
+                    deleteAllTasks={deleteAllTasks}
+                />
+                <TasksList
+                    tasksArray={tasksArray}
+                    numberOfTasksRemaining={tasksArray.length - numberOfCompletedTasks}
+                    toggleCompleted={toggleCompleted}
+                    deleteTask={deleteTask}
+                />
+            </div>}
+        </>
     )
 }
 
