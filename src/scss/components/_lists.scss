@@ -1,4 +1,6 @@
 .lists {
+    height: max-content;
+    margin-top: 5em;
     display: flex;
     flex-direction: column;
     padding: 0.5em;
@@ -8,5 +10,38 @@
     &__menu {
         display: flex;
         justify-content: space-between;
+
+        &-input {
+            width: 100%;
+            background-color: transparent;
+            color: $light;
+            border: none;
+            border-bottom: 2px solid $color;
+        }
+
+        &-btn {
+        }
+    }
+
+    &__list {
+        margin-top: 1em;
+
+        &-item {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            &__details {
+                display: flex;
+                font-size: 0.75rem;
+            }
+            &__name {
+                margin: 0 0.25em;
+                flex: 1 1;
+            }
+            &__delete {
+
+            }
+        }
     }
 }
