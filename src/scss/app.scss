@@ -35,29 +35,34 @@ button {
 
 .container {
     margin: 1em auto;
-    display: flex;
-    flex-direction: column;
 }
 
 /* --- // --- // MEDIA QUERIES // --- // --- */
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 769px) {
     .container {
         width: $width-lg;
+        display: grid;
+        grid-template-columns: 30% 70%;
     }
 }
 
-@media screen and (min-width: 481px) and (max-width: 1024px) {
+@media screen and (min-width: 481px) and (max-width: 768px) {
     .container {
         width: $width-md;
+        display: flex;
+        flex-direction: column;
     }
 }
 
 @media screen and (max-width: 480px) {
     .container {
         width: $width-sm;
+        display: flex;
+        flex-direction: column;
     }
 }
 
 @import "./components/socials";
+@import "./components/lists";
 @import "./components/tasks";

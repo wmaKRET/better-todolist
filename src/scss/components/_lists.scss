@@ -1,0 +1,12 @@
+.lists {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+    border: 2px solid $color;
+    border-radius: 0.5em;
+
+    &__menu {
+        display: flex;
+        justify-content: space-between;
+    }
+}
