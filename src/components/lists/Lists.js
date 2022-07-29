@@ -16,6 +16,11 @@ const Lists = () => {
         setListsArray(prevLists => [...prevLists, createList(inputValue)])
     }
 
+    const deleteList = (listID) => {
+        setListsArray(prevLists => prevLists
+            .filter(list => list.id != listID))
+    }
+
     return (
         <div className="lists">
             <ListsMenu 
@@ -23,6 +28,7 @@ const Lists = () => {
             />
             <ListsList 
                 listsArray={listsArray}
+                deleteList={deleteList}
             />
         </div>
     )
