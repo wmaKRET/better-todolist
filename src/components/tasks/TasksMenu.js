@@ -1,12 +1,14 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { Context } from "../../Context"
 
-const TasksMenu = ({ numberOfTasks, numberOfCompletedTasks, addTask, deleteCompletedTasks, deleteAllTasks }) => {
+const TasksMenu = ({ numberOfTasks, numberOfCompletedTasks, deleteCompletedTasks, deleteAllTasks }) => {
     const TIMEOUT_IN_MS = 1000
     const DEFAULT_ALERT = {
         message: "What needs to be done?",
         action: ''
     }
 
+    const { addTaskToList } = useContext(Context)
     const [inputValue, setInputValue] = useState("")
     const [alert, setAlert] = useState(DEFAULT_ALERT)
     const [AreButtonsDisabled, setAreButtonsDisabled] = useState(false)
@@ -37,7 +39,7 @@ const TasksMenu = ({ numberOfTasks, numberOfCompletedTasks, addTask, deleteCompl
         if (inputValue.length !== 0) {
             disableButtons()
             displayAlert("Task added to list", "success")
-            addTask(valueFromInput)
+            addTaskToList(valueFromInput)
             setInputValue("")
         } else {
             disableButtons()

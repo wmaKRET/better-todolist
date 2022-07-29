@@ -1,10 +1,14 @@
+import { useContext } from "react"
+import { Context } from "../../Context"
 import TaskItem from "./TaskItem"
 
 const TasksList = ({ tasksArray, numberOfTasksRemaining, toggleCompleted, deleteTask }) => {
-    const taskElements = tasksArray.map(item => (
+    const { listsArray, activeListID } = useContext(Context)
+    const activeList = listsArray.filter(list => list.id === activeListID)
+    const taskElements = activeList[0].tasks.map(task => (
         <TaskItem
-            key={item.id}
-            taskObj={item}
+            key={task.id}
+            taskObj={task}
             toggleCompleted={toggleCompleted}
             deleteTask={deleteTask}
         />

@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react"
-
+import { useContext, useEffect, useState } from "react"
+import { Context } from "../../Context"
 import TasksMenu from "./TasksMenu"
 import TasksList from "./TasksList"
 
-const Tasks = ({ activeListID }) => {
+const Tasks = () => {
+    const { activeListID } = useContext(Context)
     const [tasksArray, setTasksArray] = useState([])
     const [numberOfCompletedTasks, setNumberOfCompletedTasks] = useState(0)
 
@@ -11,16 +12,6 @@ const Tasks = ({ activeListID }) => {
         const completedTasks = tasksArray.filter(task => task.isCompleted)
         setNumberOfCompletedTasks(completedTasks.length)
     }, [tasksArray])
-
-    const createTask = (inputValue) => ({
-        id: Date.now().toString(),
-        value: inputValue,
-        isCompleted: false
-    })
-
-    const addTask = (inputValue) => {
-        setTasksArray(prevTasks => [...prevTasks, createTask(inputValue)])
-    }
 
     const deleteCompletedTasks = () => {
         setTasksArray(prevTasks => prevTasks
@@ -54,7 +45,6 @@ const Tasks = ({ activeListID }) => {
                 <TasksMenu
                     numberOfTasks={tasksArray.length}
                     numberOfCompletedTasks={numberOfCompletedTasks}
-                    addTask={addTask}
                     deleteCompletedTasks={deleteCompletedTasks}
                     deleteAllTasks={deleteAllTasks}
                 />
