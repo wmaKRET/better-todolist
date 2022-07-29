@@ -13,12 +13,12 @@ const Task = ({ taskObj, toggleCompleted, deleteTask }) => {
     const [hovered, ref] = useHover()
 
     const isTaskCompletedIcon = () => taskObj.isCompleted
-        ? <MdOutlineRadioButtonChecked />
-        : <MdOutlineRadioButtonUnchecked />
+        ? <MdOutlineRadioButtonChecked size={20} />
+        : <MdOutlineRadioButtonUnchecked size={20} />
 
     const isTrashBinHoveredIcon = () => hovered
-        ? <RiDeleteBin2Fill />
-        : <RiDeleteBin2Line />
+        ? <RiDeleteBin2Fill size={20} className="hovered" />
+        : <RiDeleteBin2Line size={20} />
 
     return (
         <div

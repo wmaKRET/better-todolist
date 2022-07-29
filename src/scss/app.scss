@@ -34,10 +34,29 @@ button {
 }
 
 .container {
-    width: 90%;
     margin: 1em auto;
     display: flex;
     flex-direction: column;
+}
+
+/* --- // --- // MEDIA QUERIES // --- // --- */
+
+@media screen and (min-width: 1024px) {
+    .container {
+        width: $width-lg;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 1024px) {
+    .container {
+        width: $width-md;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        width: $width-sm;
+    }
 }
 
 @import "./components/tasks"

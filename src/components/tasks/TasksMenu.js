@@ -93,27 +93,29 @@ const TasksMenu = ({ numberOfTasks, numberOfCompletedTasks, addTask, deleteCompl
                 value={inputValue}
                 onChange={handleChange}
             ></input>
-            <button
-                className="tasks__menu-btn"
-                onClick={() => handleAddBtn(inputValue)}
-                disabled={AreButtonsDisabled}
-            >
-                ADD TASK
-            </button>
-            <button
-                className="tasks__menu-btn"
-                onClick={handleClearCompletedBtn}
-                disabled={AreButtonsDisabled}
-            >
-                CLEAR COMPLETED
-            </button>
-            <button
-                className="tasks__menu-btn"
-                onClick={handleClearAllBtn}
-                disabled={AreButtonsDisabled}
-            >
-                CLEAR ALL
-            </button>
+            <div className="tasks__menu-btns">
+                <button
+                    className="tasks__menu-btn"
+                    onClick={() => handleAddBtn(inputValue)}
+                    disabled={AreButtonsDisabled}
+                >
+                    ADD TASK
+                </button>
+                <button
+                    className="tasks__menu-btn"
+                    onClick={handleClearCompletedBtn}
+                    disabled={AreButtonsDisabled}
+                >
+                    CLEAR COMPLETED
+                </button>
+                <button
+                    className="tasks__menu-btn"
+                    onClick={handleClearAllBtn}
+                    disabled={AreButtonsDisabled}
+                >
+                    CLEAR ALL
+                </button>
+            </div>
         </div>
     )
 }
