@@ -1,8 +1,8 @@
+import { useEffect } from "react"
 import useHover from "../../hooks/useHover"
-
 import { RiDeleteBin2Line, RiDeleteBin2Fill } from "react-icons/ri"
 
-const ListItem = ({ listObj, whichListIsActiveID, deleteList }) => {
+const ListItem = ({ listObj, whichListIsActiveID, toggleActiveList, deleteList }) => {
     const [hovered, ref] = useHover()
 
     const isThisListActive = () => listObj.id === whichListIsActiveID
@@ -20,7 +20,10 @@ const ListItem = ({ listObj, whichListIsActiveID, deleteList }) => {
                 <p>/</p>
                 <p>{listObj.tasks.length}</p>
             </div>
-            <div className="lists__list-item__name">
+            <div 
+                className="lists__list-item__name"
+                onClick={() => toggleActiveList(listObj.id)}
+            >
                 <p>{listObj.value}</p>
             </div>
             <div

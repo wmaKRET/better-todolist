@@ -1,11 +1,12 @@
 import ListItem from "./ListItem"
 
-const ListsList = ({ listsArray, whichListIsActiveID, deleteList }) => {
+const ListsList = ({ listsArray, whichListIsActiveID, toggleActiveList, deleteList }) => {
     const listElements = listsArray.map(list => (
         <ListItem
             key={list.id}
             listObj={list}
             whichListIsActiveID={whichListIsActiveID}
+            toggleActiveList={toggleActiveList}
             deleteList={deleteList}
         />
     ))

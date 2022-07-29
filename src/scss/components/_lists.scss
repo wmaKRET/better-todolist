@@ -56,9 +56,14 @@
             justify-content: space-around;
             align-items: center;
             color: $gray;
+            transition: $transition;
 
             &.active {
                 color: $white;
+            }
+
+            &:hover {
+                color: $light;
             }
 
             &__details {
