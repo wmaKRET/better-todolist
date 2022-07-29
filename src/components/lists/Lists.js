@@ -18,8 +18,12 @@ const Lists = () => {
 
     return (
         <div className="lists">
-            <ListsMenu />
-            <ListsList />
+            <ListsMenu 
+                addList={addList}
+            />
+            <ListsList 
+                listsArray={listsArray}
+            />
         </div>
     )
 }
