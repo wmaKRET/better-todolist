@@ -1,7 +1,7 @@
 import ListsList from "./ListsList"
 import ListsMenu from "./ListsMenu"
 
-const Lists = ({ listsArray, whichListIsActiveID, toggleActiveList, addList, deleteList}) => {
+const Lists = ({ listsArray, activeListID, toggleActiveList, addList, deleteList}) => {
     return (
         <div className="lists">
             <ListsMenu 
@@ -9,7 +9,7 @@ const Lists = ({ listsArray, whichListIsActiveID, toggleActiveList, addList, del
             />
             <ListsList 
                 listsArray={listsArray}
-                whichListIsActiveID={whichListIsActiveID}
+                activeListID={activeListID}
                 toggleActiveList={toggleActiveList}
                 deleteList={deleteList}
             />

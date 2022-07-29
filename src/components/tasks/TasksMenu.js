@@ -1,7 +1,5 @@
 import { useState } from "react"
 
-import { MdKeyboardArrowDown } from "react-icons/md"
-
 const TasksMenu = ({ numberOfTasks, numberOfCompletedTasks, addTask, deleteCompletedTasks, deleteAllTasks }) => {
     const TIMEOUT_IN_MS = 1000
     const DEFAULT_ALERT = {
@@ -81,9 +79,7 @@ const TasksMenu = ({ numberOfTasks, numberOfCompletedTasks, addTask, deleteCompl
     return (
         <div className="tasks__menu">
             <div className="tasks__menu-msg">
-                <MdKeyboardArrowDown size={28} />
                 <p className={`tasks__menu-msg-${alert.action}`}>{alert.message}</p>
-                <MdKeyboardArrowDown size={28} />
             </div>
             <input
                 type="text"

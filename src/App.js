@@ -6,7 +6,7 @@ import "./scss/app.scss"
 
 const App = () => {
   const [listsArray, setListsArray] = useState([])
-  const [whichListIsActiveID, setWitchListIsActiveID] = useState(0)
+  const [activeListID, setActiveListID] = useState(0)
 
   const createList = (inputValue) => ({
     id: Date.now().toString(),
@@ -16,17 +16,17 @@ const App = () => {
 
   const toggleActiveList = (listID) => {
     const activeList = listsArray.filter(list => list.id === listID)
-    setWitchListIsActiveID(activeList[0].id)
+    setActiveListID(activeList[0].id)
   }
-  
+
   const addList = (inputValue) => {
     const newList = createList(inputValue)
     setListsArray(prevLists => [...prevLists, newList])
-    setWitchListIsActiveID(newList.id)
+    setActiveListID(newList.id)
   }
   const deleteList = (listID) => {
-    if (whichListIsActiveID === listID) setWitchListIsActiveID(0)
-    setListsArray(prevLists => prevLists.filter(list => list.id != listID))   
+    if (activeListID === listID) setActiveListID(0)
+    setListsArray(prevLists => prevLists.filter(list => list.id != listID))
   }
 
   return (
@@ -35,13 +35,14 @@ const App = () => {
       <div className="container">
         <Lists
           listsArray={listsArray}
-          whichListIsActiveID={whichListIsActiveID}
+          activeListID={activeListID}
           toggleActiveList={toggleActiveList}
           addList={addList}
           deleteList={deleteList}
         />
         <Tasks
-          whichListIsActiveID={whichListIsActiveID}
+          listsArray={listsArray}
+          activeListID={activeListID}
         />
       </div>
     </>

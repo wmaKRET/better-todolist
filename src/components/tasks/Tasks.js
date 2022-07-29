@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import TasksMenu from "./TasksMenu"
 import TasksList from "./TasksList"
 
-const Tasks = ({ whichListIsActiveID }) => {
+const Tasks = ({ activeListID }) => {
     const [tasksArray, setTasksArray] = useState([])
     const [numberOfCompletedTasks, setNumberOfCompletedTasks] = useState(0)
 
@@ -49,7 +49,7 @@ const Tasks = ({ whichListIsActiveID }) => {
 
     return (
         <>
-            {whichListIsActiveID !== 0 &&
+            {activeListID !== 0 &&
             <div className="tasks">
                 <TasksMenu
                     numberOfTasks={tasksArray.length}
