@@ -2,17 +2,21 @@ import { useContext } from "react"
 import { Context } from "../../Context"
 import TaskItem from "./TaskItem"
 
-const TasksList = ({ tasksArray, numberOfTasksRemaining, toggleCompleted, deleteTask }) => {
+const TasksList = () => {
     const { listsArray, activeListID } = useContext(Context)
     const activeList = listsArray.filter(list => list.id === activeListID)
     const taskElements = activeList[0].tasks.map(task => (
         <TaskItem
             key={task.id}
-            taskObj={task}
-            toggleCompleted={toggleCompleted}
-            deleteTask={deleteTask}
+            task={task}
         />
     ))
+
+    const numberOfTasksRemaining = () => {
+        const activeListArray = listsArray.filter(list => list.id === activeListID)
+        const unfinishedTasksArray = activeListArray[0].tasks.filter(task => !task.isCompleted)
+        return unfinishedTasksArray.length
+    }
 
     return (
         <div className="tasks__list">
@@ -20,9 +24,9 @@ const TasksList = ({ tasksArray, numberOfTasksRemaining, toggleCompleted, delete
                 className="tasks__list-remaining"
             >
                 {
-                    numberOfTasksRemaining === 1
-                        ? `${numberOfTasksRemaining} task remaining`
-                        : `${numberOfTasksRemaining} tasks remaining`
+                    numberOfTasksRemaining() === 1
+                        ? `${numberOfTasksRemaining()} task remaining`
+                        : `${numberOfTasksRemaining()} tasks remaining`
                 }
             </p>
             {taskElements}

@@ -4,11 +4,11 @@ import useHover from "../../hooks/useHover"
 import { MdOutlineRadioButtonUnchecked, MdOutlineRadioButtonChecked } from "react-icons/md"
 import { RiDeleteBin2Line, RiDeleteBin2Fill } from "react-icons/ri"
 
-const TaskItem = ({ taskObj }) => {
+const TaskItem = ({ task }) => {
     const { toggleTaskCompletion, deleteTaskFromList } = useContext(Context)
     const [hovered, ref] = useHover()
 
-    const isTaskCompletedIcon = () => taskObj.isCompleted
+    const isTaskCompletedIcon = () => task.isCompleted
         ? <MdOutlineRadioButtonChecked size={20} />
         : <MdOutlineRadioButtonUnchecked size={20} />
 
@@ -18,21 +18,21 @@ const TaskItem = ({ taskObj }) => {
 
     return (
         <div
-            className={taskObj.isCompleted
+            className={task.isCompleted
                 ? "tasks__list-item tasks__list-item-completed"
                 : "tasks__list-item"
             }>
             <div
                 className="tasks__list-item-radiobtn"
-                onClick={() => toggleTaskCompletion(taskObj.id)}
+                onClick={() => toggleTaskCompletion(task.id)}
             >
                 {isTaskCompletedIcon()}
-                <p className={taskObj.isCompleted ? 'completed-task' : ''}>{taskObj.value}</p>
+                <p className={task.isCompleted ? 'completed-task' : ''}>{task.value}</p>
             </div>
             <div
                 className="tasks__list-item-delete"
                 ref={ref}
-                onClick={() => deleteTaskFromList(taskObj.id)}
+                onClick={() => deleteTaskFromList(task.id)}
             >
                 {isTrashBinHoveredIcon()}
             </div>
