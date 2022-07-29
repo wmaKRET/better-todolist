@@ -1,6 +1,7 @@
+/* --- // --- // LISTS COMPONENT STYLING // --- // --- */
+
 .lists {
     height: max-content;
-    margin-top: 5em;
     display: flex;
     flex-direction: column;
     padding: 0.5em;
@@ -50,6 +51,7 @@
         margin: 0.5em 0.25em;
 
         &-item {
+            margin: 0.5em 0;
             display: flex;
             justify-content: space-around;
             align-items: center;
@@ -62,6 +64,13 @@
             &__name {
                 margin: 0 0.25em;
                 flex: 1 1;
+                overflow: hidden; 
+
+                & p {
+                    overflow: hidden; 
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
             }
 
             &__delete {
@@ -72,5 +81,30 @@
                 }
             }
         }
+    }
+}
+
+/* --- // --- // LISTS COMPONENT MEDIA QUERIES // --- // --- */
+
+@media screen and (min-width: 769px) {
+    .lists {
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 5em;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .lists {
+        width: 70%;
+        margin: 0 auto;
+        margin-top: 4em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .lists {
+        width: 80%;
+        margin: 1em auto 0 auto;
     }
 }
