@@ -1,9 +1,11 @@
+import { useContext } from "react"
+import { Context } from "../../Context"
 import useHover from "../../hooks/useHover"
-
 import { MdOutlineRadioButtonUnchecked, MdOutlineRadioButtonChecked } from "react-icons/md"
 import { RiDeleteBin2Line, RiDeleteBin2Fill } from "react-icons/ri"
 
-const TaskItem = ({ taskObj, toggleCompleted, deleteTask }) => {
+const TaskItem = ({ taskObj, toggleCompleted }) => {
+    const { deleteTaskFromList } = useContext(Context)
     const [hovered, ref] = useHover()
 
     const isTaskCompletedIcon = () => taskObj.isCompleted
@@ -30,7 +32,7 @@ const TaskItem = ({ taskObj, toggleCompleted, deleteTask }) => {
             <div
                 className="tasks__list-item-delete"
                 ref={ref}
-                onClick={() => deleteTask(taskObj.id)}
+                onClick={() => deleteTaskFromList(taskObj.id)}
             >
                 {isTrashBinHoveredIcon()}
             </div>

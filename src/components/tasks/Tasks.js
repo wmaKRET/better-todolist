@@ -32,12 +32,6 @@ const Tasks = () => {
         )
     }
 
-    const deleteTask = (taskID) => {
-        setTasksArray(prevTasks => prevTasks
-            .filter(task => task.id !== taskID)
-        )
-    }
-
     return (
         <>
             {activeListID !== 0 &&
@@ -52,7 +46,6 @@ const Tasks = () => {
                     tasksArray={tasksArray}
                     numberOfTasksRemaining={tasksArray.length - numberOfCompletedTasks}
                     toggleCompleted={toggleCompleted}
-                    deleteTask={deleteTask}
                 />
             </div>}
         </>

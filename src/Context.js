@@ -41,6 +41,13 @@ const ContextProvider = ({ children }) => {
         ))
     }
 
+    const deleteTaskFromList = (taskID) => {
+        setListsArray(prevLists => prevLists.map(list => list.id !== activeListID
+            ? list
+            : { ...list, tasks: list.tasks.filter(task => task.id !== taskID)}
+        ))
+    }
+
     return (
         <Context.Provider
             value={{
@@ -49,7 +56,8 @@ const ContextProvider = ({ children }) => {
                 addList,
                 toggleActiveList,
                 deleteList,
-                addTaskToList
+                addTaskToList,
+                deleteTaskFromList
             }}
         >
             {children}
