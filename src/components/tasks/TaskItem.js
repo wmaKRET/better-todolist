@@ -4,8 +4,8 @@ import useHover from "../../hooks/useHover"
 import { MdOutlineRadioButtonUnchecked, MdOutlineRadioButtonChecked } from "react-icons/md"
 import { RiDeleteBin2Line, RiDeleteBin2Fill } from "react-icons/ri"
 
-const TaskItem = ({ taskObj, toggleCompleted }) => {
-    const { deleteTaskFromList } = useContext(Context)
+const TaskItem = ({ taskObj }) => {
+    const { toggleTaskCompletion, deleteTaskFromList } = useContext(Context)
     const [hovered, ref] = useHover()
 
     const isTaskCompletedIcon = () => taskObj.isCompleted
@@ -24,7 +24,7 @@ const TaskItem = ({ taskObj, toggleCompleted }) => {
             }>
             <div
                 className="tasks__list-item-radiobtn"
-                onClick={() => toggleCompleted(taskObj.id)}
+                onClick={() => toggleTaskCompletion(taskObj.id)}
             >
                 {isTaskCompletedIcon()}
                 <p className={taskObj.isCompleted ? 'completed-task' : ''}>{taskObj.value}</p>

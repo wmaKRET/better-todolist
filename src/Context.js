@@ -41,10 +41,20 @@ const ContextProvider = ({ children }) => {
         ))
     }
 
-    const deleteTaskFromList = (taskID) => {
+    const toggleTaskCompletion = (taskID) => {
         setListsArray(prevLists => prevLists.map(list => list.id !== activeListID
             ? list
-            : { ...list, tasks: list.tasks.filter(task => task.id !== taskID)}
+            : { ...list, tasks: list.tasks.map(task => task.id === taskID
+                ? { ...task, isCompleted: !task.isCompleted }
+                : task
+            )}
+        ))
+    }
+
+    const deleteTaskFromList = (taskID) => {
+        setListsArray(prevLists => prevLists.map(list => list.id === activeListID
+            ? { ...list, tasks: list.tasks.filter(task => task.id !== taskID)}
+            : list
         ))
     }
 
@@ -57,6 +67,7 @@ const ContextProvider = ({ children }) => {
                 toggleActiveList,
                 deleteList,
                 addTaskToList,
+                toggleTaskCompletion,
                 deleteTaskFromList
             }}
         >
