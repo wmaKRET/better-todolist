@@ -1,8 +1,8 @@
-import Task from "./Task"
+import TaskItem from "./TaskItem"
 
 const TasksList = ({ tasksArray, numberOfTasksRemaining, toggleCompleted, deleteTask }) => {
     const taskElements = tasksArray.map(item => (
-        <Task
+        <TaskItem
             key={item.id}
             taskObj={item}
             toggleCompleted={toggleCompleted}

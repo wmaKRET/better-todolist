@@ -9,7 +9,7 @@ import {
     RiDeleteBin2Fill
 } from "react-icons/ri"
 
-const Task = ({ taskObj, toggleCompleted, deleteTask }) => {
+const TaskItem = ({ taskObj, toggleCompleted, deleteTask }) => {
     const [hovered, ref] = useHover()
 
     const isTaskCompletedIcon = () => taskObj.isCompleted
@@ -44,4 +44,4 @@ const Task = ({ taskObj, toggleCompleted, deleteTask }) => {
     )
 }
 
-export default Task
+export default TaskItem
