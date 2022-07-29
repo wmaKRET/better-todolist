@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from "react"
+import React, { useState } from "react"
 
 const Context = React.createContext()
 
@@ -31,7 +31,7 @@ const ContextProvider = ({ children }) => {
 
     const deleteList = (listID) => {
         if (activeListID === listID) setActiveListID(0)
-        setListsArray(prevLists => prevLists.filter(list => list.id != listID))
+        setListsArray(prevLists => prevLists.filter(list => list.id !== listID))
     }
 
     const addTaskToList = (taskName) => {
@@ -58,6 +58,20 @@ const ContextProvider = ({ children }) => {
         ))
     }
 
+    const deleteCompletedTasks = () => {
+        setListsArray(prevLists => prevLists.map(list => list.id === activeListID
+            ? { ...list, tasks: list.tasks.filter(task => !task.isCompleted)}
+            : list
+        ))
+    }
+
+    const deleteAllTasks = () => {
+        setListsArray(prevLists => prevLists.map(list => list.id === activeListID
+            ? { ...list, tasks: []}
+            : list
+        ))
+    }
+
     return (
         <Context.Provider
             value={{
@@ -68,7 +82,9 @@ const ContextProvider = ({ children }) => {
                 deleteList,
                 addTaskToList,
                 toggleTaskCompletion,
-                deleteTaskFromList
+                deleteTaskFromList,
+                deleteCompletedTasks,
+                deleteAllTasks
             }}
         >
             {children}

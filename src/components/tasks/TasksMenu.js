@@ -1,14 +1,13 @@
 import { useContext, useState } from "react"
 import { Context } from "../../Context"
 
-const TasksMenu = ({ numberOfTasks, numberOfCompletedTasks, deleteCompletedTasks, deleteAllTasks }) => {
+const TasksMenu = () => {
     const TIMEOUT_IN_MS = 1000
     const DEFAULT_ALERT = {
         message: "What needs to be done?",
         action: ''
     }
-
-    const { addTaskToList } = useContext(Context)
+    const { listsArray, activeListID, addTaskToList, deleteCompletedTasks, deleteAllTasks } = useContext(Context)
     const [inputValue, setInputValue] = useState("")
     const [alert, setAlert] = useState(DEFAULT_ALERT)
     const [AreButtonsDisabled, setAreButtonsDisabled] = useState(false)
@@ -48,6 +47,9 @@ const TasksMenu = ({ numberOfTasks, numberOfCompletedTasks, deleteCompletedTasks
     }
 
     const handleClearCompletedBtn = () => {
+        const activeListArray = listsArray.filter(list => list.id === activeListID)
+        const completedTasksArray = activeListArray[0].tasks.filter(task => task.isCompleted)
+        const numberOfCompletedTasks = completedTasksArray.length
         if (numberOfCompletedTasks > 0) {
             disableButtons()
             displayAlert(
@@ -63,6 +65,8 @@ const TasksMenu = ({ numberOfTasks, numberOfCompletedTasks, deleteCompletedTasks
     }
 
     const handleClearAllBtn = () => {
+        const activeListArray = listsArray.filter(list => list.id === activeListID)
+        const numberOfTasks = activeListArray[0].tasks.length
         if (numberOfTasks > 0) {
             disableButtons()
             displayAlert(

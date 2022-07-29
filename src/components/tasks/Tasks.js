@@ -13,39 +13,14 @@ const Tasks = () => {
         setNumberOfCompletedTasks(completedTasks.length)
     }, [tasksArray])
 
-    const deleteCompletedTasks = () => {
-        setTasksArray(prevTasks => prevTasks
-            .filter(task => !task.isCompleted)
-        )
-    }
-
-    const deleteAllTasks = () => {
-        setTasksArray([])
-    }
-
-    const toggleCompleted = (taskID) => {
-        setTasksArray(prevTasks => prevTasks
-            .map(task => task.id === taskID
-                ? { ...task, isCompleted: !task.isCompleted }
-                : task
-            )
-        )
-    }
-
     return (
         <>
             {activeListID !== 0 &&
             <div className="tasks">
-                <TasksMenu
-                    numberOfTasks={tasksArray.length}
-                    numberOfCompletedTasks={numberOfCompletedTasks}
-                    deleteCompletedTasks={deleteCompletedTasks}
-                    deleteAllTasks={deleteAllTasks}
-                />
+                <TasksMenu />
                 <TasksList
                     tasksArray={tasksArray}
                     numberOfTasksRemaining={tasksArray.length - numberOfCompletedTasks}
-                    toggleCompleted={toggleCompleted}
                 />
             </div>}
         </>
