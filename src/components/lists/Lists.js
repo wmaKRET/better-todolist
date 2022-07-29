@@ -1,17 +1,23 @@
+import { useState } from "react"
+
+import ListsMenu from "./ListsMenu"
+
 const Lists = () => {
+    const [listsArray, setListsArray] = useState([])
+
+    const createList = (inputValue) => ({
+        id: Date.now().toString(),
+        value: inputValue,
+        tasks: []
+    })
+
+    const addList = (inputValue) => {
+        setListsArray(prevLists => [...prevLists, createList(inputValue)])
+    }
+
     return (
         <div className="lists">
-            <div className="lists__menu">
-                <input
-                    className="lists__menu-input"
-                    placeholder="List name"
-                ></input>
-                <button
-                    className="lists__menu-btn"
-                >
-                    +
-                </button>
-            </div>
+            <ListsMenu />
             <div className="lists__list">
                 <div className="lists__list-item">
                     <div className="lists__list-item__details">
