@@ -1,11 +1,13 @@
-import { useEffect } from "react"
+import { useContext } from "react"
+import { Context } from "../../Context"
 import useHover from "../../hooks/useHover"
 import { RiDeleteBin2Line, RiDeleteBin2Fill } from "react-icons/ri"
 
-const ListItem = ({ listObj, activeListID, toggleActiveList, deleteList }) => {
+const ListItem = ({ list }) => {
+    const { activeListID, toggleActiveList, deleteList} = useContext(Context)
     const [hovered, ref] = useHover()
 
-    const isThisListActive = () => listObj.id === activeListID
+    const isThisListActive = () => list.id === activeListID
         ? "lists__list-item active"
         : "lists__list-item" 
 
@@ -16,20 +18,20 @@ const ListItem = ({ listObj, activeListID, toggleActiveList, deleteList }) => {
     return (
         <div className={isThisListActive()}>
             <div className="lists__list-item__details">
-                <p>{listObj.tasks.length}</p>
+                <p>{list.tasks.length}</p>
                 <p>/</p>
-                <p>{listObj.tasks.length}</p>
+                <p>{list.tasks.length}</p>
             </div>
             <div 
                 className="lists__list-item__name"
-                onClick={() => toggleActiveList(listObj.id)}
+                onClick={() => toggleActiveList(list.id)}
             >
-                <p>{listObj.value}</p>
+                <p>{list.value}</p>
             </div>
             <div
                 ref={ref}
                 className="lists__list-item__delete"
-                onClick={() => deleteList(listObj.id)}
+                onClick={() => deleteList(list.id)}
             >
                 {isTrashBinHoveredIcon()}
             </div>

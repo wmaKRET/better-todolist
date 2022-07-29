@@ -1,13 +1,14 @@
+import { useContext } from "react"
+import { Context } from "../../Context"
 import ListItem from "./ListItem"
 
-const ListsList = ({ listsArray, activeListID, toggleActiveList, deleteList }) => {
+const ListsList = () => {
+    const { listsArray } = useContext(Context)
+
     const listElements = listsArray.map(list => (
         <ListItem
             key={list.id}
-            listObj={list}
-            activeListID={activeListID}
-            toggleActiveList={toggleActiveList}
-            deleteList={deleteList}
+            list={list}
         />
     ))
 

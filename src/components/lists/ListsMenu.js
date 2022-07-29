@@ -1,9 +1,10 @@
-import { useState } from "react"
-
+import { useContext, useState } from "react"
+import { Context } from "../../Context"
 import { MdOutlineAddBox } from "react-icons/md"
 
-const ListsMenu = ({ addList }) => {
+const ListsMenu = () => {
     const TIMOUET_IN_MS = 1000
+    const { addList } = useContext(Context)
     const [inputValue, setInputValue] = useState("")
     const [isAddButtonDisabled, setIsAddButtonDisabled] = useState(false)
 
