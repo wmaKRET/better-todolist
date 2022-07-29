@@ -4,6 +4,21 @@
     display: flex;
     flex-direction: column;
 
+    & button {
+        padding: 0.5em 1em;
+        background-color: transparent;
+        color: $light;
+        border: solid 2px $color;
+        border-radius: 0.5em;
+        transition: $transition;
+        cursor: pointer;
+    
+        &:hover {
+            background-color: $color;
+            color: $white;
+        }
+    }
+
     &__menu {
         display: flex;
         flex-direction: column;
