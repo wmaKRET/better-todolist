@@ -9,10 +9,11 @@ const Tasks = () => {
     return (
         <>
             {activeListID !== 0 &&
-            <div className="tasks">
-                <TasksMenu />
-                <TasksList />
-            </div>}
+                <div className="tasks">
+                    <TasksMenu />
+                    <TasksList />
+                </div>
+            }
         </>
     )
 }

@@ -20,8 +20,8 @@ const TaskItem = ({ task }) => {
         <div
             className={task.isCompleted
                 ? "tasks__list-item tasks__list-item-completed"
-                : "tasks__list-item"
-            }>
+                : "tasks__list-item"}
+        >
             <div
                 className="tasks__list-item-radiobtn"
                 onClick={() => toggleTaskCompletion(task.id)}

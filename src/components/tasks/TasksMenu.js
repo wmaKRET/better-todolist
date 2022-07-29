@@ -88,8 +88,8 @@ const TasksMenu = () => {
                 <p className={`tasks__menu-msg-${alert.action}`}>{alert.message}</p>
             </div>
             <input
-                type="text"
                 className="tasks__menu-input"
+                type="text"
                 placeholder="Write here..."
                 name="inputValue"
                 value={inputValue}
@@ -98,22 +98,22 @@ const TasksMenu = () => {
             <div className="tasks__menu-btns">
                 <button
                     className="tasks__menu-btn"
-                    onClick={() => handleAddBtn(inputValue)}
                     disabled={AreButtonsDisabled}
+                    onClick={() => handleAddBtn(inputValue)}
                 >
                     ADD TASK
                 </button>
                 <button
                     className="tasks__menu-btn"
-                    onClick={handleClearCompletedBtn}
                     disabled={AreButtonsDisabled}
+                    onClick={handleClearCompletedBtn}
                 >
                     CLEAR COMPLETED
                 </button>
                 <button
                     className="tasks__menu-btn"
-                    onClick={handleClearAllBtn}
                     disabled={AreButtonsDisabled}
+                    onClick={handleClearAllBtn}
                 >
                     CLEAR ALL
                 </button>

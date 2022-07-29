@@ -20,9 +20,7 @@ const TasksList = () => {
 
     return (
         <div className="tasks__list">
-            <p
-                className="tasks__list-remaining"
-            >
+            <p className="tasks__list-remaining">
                 {
                     numberOfTasksRemaining() === 1
                         ? `${numberOfTasksRemaining()} task remaining`
