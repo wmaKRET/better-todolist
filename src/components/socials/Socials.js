@@ -1,5 +1,4 @@
 import Resume from "../../assets/resume.pdf"
-
 import { BsFillPersonLinesFill } from "react-icons/bs"
 import { FaGithub, FaLinkedin } from "react-icons/fa"
 import { HiOutlineMail } from "react-icons/hi"
@@ -31,9 +30,10 @@ const Socials = () => {
     const socialElements = socialsArray.map((item, i) => (
         <a
             key={i}
+            className="socials__item"
             href={item.url}
             target="_blank"
-            className="socials__item"
+            rel="noreferrer"
         >
             <p className="socials__item-link">{item.name}</p>
             {item.icon}

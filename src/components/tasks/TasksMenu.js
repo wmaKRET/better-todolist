@@ -8,13 +8,13 @@ const TasksMenu = () => {
         action: ''
     }
     const { listsArray, activeListID, addTaskToList, deleteCompletedTasks, deleteAllTasks } = useContext(Context)
-    const [inputValue, setInputValue] = useState("")
+    const [taskInputValue, setTaskInputValue] = useState("")
     const [alert, setAlert] = useState(DEFAULT_ALERT)
     const [AreButtonsDisabled, setAreButtonsDisabled] = useState(false)
 
     const handleChange = (event) => {
         const { value } = event.target
-        setInputValue(value)
+        setTaskInputValue(value)
     }
 
     const displayAlert = (alertMessage, alertAction) => {
@@ -35,11 +35,11 @@ const TasksMenu = () => {
     }
 
     const handleAddBtn = (valueFromInput) => {
-        if (inputValue.length !== 0) {
+        if (taskInputValue.length !== 0) {
             disableButtons()
             displayAlert("Task added to list", "success")
             addTaskToList(valueFromInput)
-            setInputValue("")
+            setTaskInputValue("")
         } else {
             disableButtons()
             displayAlert("Input is empty", "failure")
@@ -91,15 +91,15 @@ const TasksMenu = () => {
                 className="tasks__menu-input"
                 type="text"
                 placeholder="Write here..."
-                name="inputValue"
-                value={inputValue}
+                name="taskInputValue"
+                value={taskInputValue}
                 onChange={handleChange}
             ></input>
             <div className="tasks__menu-btns">
                 <button
                     className="tasks__menu-btn"
                     disabled={AreButtonsDisabled}
-                    onClick={() => handleAddBtn(inputValue)}
+                    onClick={() => handleAddBtn(taskInputValue)}
                 >
                     ADD TASK
                 </button>

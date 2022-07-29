@@ -27,7 +27,7 @@ const ContextProvider = ({ children }) => {
     const toggleActiveList = (listID) => {
         const activeList = listsArray.filter(list => list.id === listID)
         setActiveListID(activeList[0].id)
-    }  
+    }
 
     const deleteList = (listID) => {
         if (activeListID === listID) setActiveListID(0)
@@ -44,30 +44,32 @@ const ContextProvider = ({ children }) => {
     const toggleTaskCompletion = (taskID) => {
         setListsArray(prevLists => prevLists.map(list => list.id !== activeListID
             ? list
-            : { ...list, tasks: list.tasks.map(task => task.id === taskID
-                ? { ...task, isCompleted: !task.isCompleted }
-                : task
-            )}
+            : {
+                ...list, tasks: list.tasks.map(task => task.id === taskID
+                    ? { ...task, isCompleted: !task.isCompleted }
+                    : task
+                )
+            }
         ))
     }
 
     const deleteTaskFromList = (taskID) => {
         setListsArray(prevLists => prevLists.map(list => list.id === activeListID
-            ? { ...list, tasks: list.tasks.filter(task => task.id !== taskID)}
+            ? { ...list, tasks: list.tasks.filter(task => task.id !== taskID) }
             : list
         ))
     }
 
     const deleteCompletedTasks = () => {
         setListsArray(prevLists => prevLists.map(list => list.id === activeListID
-            ? { ...list, tasks: list.tasks.filter(task => !task.isCompleted)}
+            ? { ...list, tasks: list.tasks.filter(task => !task.isCompleted) }
             : list
         ))
     }
 
     const deleteAllTasks = () => {
         setListsArray(prevLists => prevLists.map(list => list.id === activeListID
-            ? { ...list, tasks: []}
+            ? { ...list, tasks: [] }
             : list
         ))
     }
