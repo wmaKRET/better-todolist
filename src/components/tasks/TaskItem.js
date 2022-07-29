@@ -1,13 +1,7 @@
 import useHover from "../../hooks/useHover"
 
-import {
-    MdOutlineRadioButtonUnchecked,
-    MdOutlineRadioButtonChecked
-} from "react-icons/md"
-import {
-    RiDeleteBin2Line,
-    RiDeleteBin2Fill
-} from "react-icons/ri"
+import { MdOutlineRadioButtonUnchecked, MdOutlineRadioButtonChecked } from "react-icons/md"
+import { RiDeleteBin2Line, RiDeleteBin2Fill } from "react-icons/ri"
 
 const TaskItem = ({ taskObj, toggleCompleted, deleteTask }) => {
     const [hovered, ref] = useHover()
