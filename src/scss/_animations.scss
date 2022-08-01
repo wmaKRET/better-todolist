@@ -3,13 +3,13 @@
 .animate-tasks {
     &-enter {
         opacity: 0;
-        transform: translateX(-100%);
+        transform: translateX(100%);
     }
 
     &-enter-active {
         opacity: 1;
         transform: translateX(0);
-        transition: opacity 300ms, transform 300ms;
+        transition: $tasks-animation;
     }
 
     &-exit {
@@ -19,8 +19,7 @@
 
     &-exit-active {
         opacity: 0;
-
-        transform: translateX(-100%);
-        transition: opacity 300ms, transform 300ms;
+        transform: translateX(100%);
+        transition: $tasks-animation;
     }
 }
