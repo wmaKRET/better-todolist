@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/better-todolist/static/css/main.47a99d4a.css",
+    "main.js": "/better-todolist/static/js/main.605662fd.js",
+    "static/media/resume.pdf": "/better-todolist/static/media/resume.ea7f21cbf4e387bb01c5.pdf",
+    "index.html": "/better-todolist/index.html",
+    "main.47a99d4a.css.map": "/better-todolist/static/css/main.47a99d4a.css.map",
+    "main.605662fd.js.map": "/better-todolist/static/js/main.605662fd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.47a99d4a.css",
+    "static/js/main.605662fd.js"
+  ]
+}
