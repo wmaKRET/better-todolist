@@ -1,14 +1,22 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
 const Context = React.createContext()
 
 const ContextProvider = ({ children }) => {
+    const getLocalStorage = () => localStorage.getItem('wmakret-better-todolist')
+        ? JSON.parse(localStorage.getItem('wmakret-better-todolist'))
+        : []
+
     // holds created lists
-    const [listsArray, setListsArray] = useState([])
+    const [listsArray, setListsArray] = useState(getLocalStorage())
     // holds active list (used to show its tasks)
     const [activeListID, setActiveListID] = useState(0)
     // defines if Tasks component should animate in or animate out 
     const [showTasks, setShowTasks] = useState(false)
+
+    useEffect(() => {
+        localStorage.setItem('wmakret-better-todolist', JSON.stringify(listsArray))
+    }, [listsArray])
 
     // returns new list object
     const createList = (inputValue) => ({
