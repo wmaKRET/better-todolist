@@ -4,6 +4,7 @@ import TaskItem from "./TaskItem"
 
 const TasksList = () => {
     const { listsArray, activeListID } = useContext(Context)
+    // picks proper list to display its tasks
     const activeList = listsArray.filter(list => list.id === activeListID)
     const taskElements = activeList[0].tasks.map(task => (
         <TaskItem
@@ -12,6 +13,7 @@ const TasksList = () => {
         />
     ))
 
+    // returns number of taks that needs to be completed
     const numberOfTasksRemaining = () => {
         const activeListArray = listsArray.filter(list => list.id === activeListID)
         const unfinishedTasksArray = activeListArray[0].tasks.filter(task => !task.isCompleted)

@@ -12,6 +12,7 @@ const useHover = () => {
         if (node) {
             node.addEventListener("mouseenter", mouseIsOverElement)
             node.addEventListener("mouseleave", mouseIsNotOverElement)
+            // clean-up function
             return () => {
                 node.addEventListener("mouseenter", mouseIsOverElement)
                 node.addEventListener("mouseleave", mouseIsNotOverElement)

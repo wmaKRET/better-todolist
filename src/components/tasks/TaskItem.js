@@ -6,6 +6,8 @@ import { RiDeleteBin2Line, RiDeleteBin2Fill } from "react-icons/ri"
 
 const TaskItem = ({ task }) => {
     const { toggleTaskCompletion, deleteTaskFromList } = useContext(Context)
+    // uses mouseenter and mouseleave event listeners
+    // used to switch between trash bin icons
     const [hovered, ref] = useHover()
 
     const isTaskCompletedIcon = () => task.isCompleted

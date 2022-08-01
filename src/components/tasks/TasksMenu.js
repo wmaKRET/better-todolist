@@ -8,15 +8,18 @@ const TasksMenu = () => {
         action: ''
     }
     const { listsArray, activeListID, addTaskToList, deleteCompletedTasks, deleteAllTasks } = useContext(Context)
+    // holds current input value (updates on change)
     const [taskInputValue, setTaskInputValue] = useState("")
     const [alert, setAlert] = useState(DEFAULT_ALERT)
     const [AreButtonsDisabled, setAreButtonsDisabled] = useState(false)
 
+    // updates taskInputValue state on change
     const handleChange = (event) => {
         const { value } = event.target
         setTaskInputValue(value)
     }
 
+    // displays messages on top of Tasks component
     const displayAlert = (alertMessage, alertAction) => {
         setAlert({
             message: alertMessage,
@@ -27,6 +30,7 @@ const TasksMenu = () => {
         }, TIMEOUT_IN_MS)
     }
 
+    // disables button to prevent user from pressing multiple buttons at one time
     const disableButtons = () => {
         setAreButtonsDisabled(true)
         setTimeout(() => {
@@ -34,6 +38,7 @@ const TasksMenu = () => {
         }, TIMEOUT_IN_MS)
     }
 
+    // adds new task to active list
     const handleAddBtn = (valueFromInput) => {
         if (taskInputValue.length !== 0) {
             disableButtons()
@@ -46,6 +51,7 @@ const TasksMenu = () => {
         }
     }
 
+    // clears completed tasks in active list
     const handleClearCompletedBtn = () => {
         const activeListArray = listsArray.filter(list => list.id === activeListID)
         const completedTasksArray = activeListArray[0].tasks.filter(task => task.isCompleted)
@@ -64,6 +70,7 @@ const TasksMenu = () => {
         }
     }
 
+    // clears all tasks in active list
     const handleClearAllBtn = () => {
         const activeListArray = listsArray.filter(list => list.id === activeListID)
         const numberOfTasks = activeListArray[0].tasks.length

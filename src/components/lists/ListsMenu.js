@@ -3,23 +3,27 @@ import { Context } from "../../Context"
 import { MdOutlineAddBox } from "react-icons/md"
 
 const ListsMenu = () => {
-    const TIMOUET_IN_MS = 1000
+    const TIMEOUT_IN_MS = 1000
     const { addList, animateTasksIn } = useContext(Context)
+    // holds current input value (updates on change)
     const [listInputValue, setListInputValue] = useState("")
     const [isAddButtonDisabled, setIsAddButtonDisabled] = useState(false)
 
+    // updates listInputValue state on change
     const handleChange = (event) => {
         const { value } = event.target
         setListInputValue(value)
     }
 
+    // disables add button to prevent multiple clicks
     const disableButton = () => {
         setIsAddButtonDisabled(true)
         setTimeout(() => {
             setIsAddButtonDisabled(false)
-        }, TIMOUET_IN_MS)
+        }, TIMEOUT_IN_MS)
     }
 
+    // adds new list to lists array
     const handleAddButton = (valueFromInput) => {
         if (listInputValue.length !== 0) {
             disableButton()

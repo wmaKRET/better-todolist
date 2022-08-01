@@ -13,12 +13,7 @@ const App = () => {
       <Socials />
       <div className="container">
         <Lists />
-        <CSSTransition 
-          in={showTasks}
-          timeout={300}
-          classNames="animate-tasks"
-          
-        >
+        <CSSTransition in={showTasks} timeout={300} classNames="animate-tasks">
           <Tasks />
         </CSSTransition>
       </div>
