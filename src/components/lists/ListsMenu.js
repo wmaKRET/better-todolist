@@ -4,7 +4,7 @@ import { MdOutlineAddBox } from "react-icons/md"
 
 const ListsMenu = () => {
     const TIMOUET_IN_MS = 1000
-    const { addList, animateTasksIn } = useContext(Context)
+    const { addList } = useContext(Context)
     const [listInputValue, setListInputValue] = useState("")
     const [isAddButtonDisabled, setIsAddButtonDisabled] = useState(false)
 
@@ -25,7 +25,6 @@ const ListsMenu = () => {
             disableButton()
             addList(valueFromInput)
             setListInputValue("")
-            animateTasksIn()
         } else disableButton()
     }
 

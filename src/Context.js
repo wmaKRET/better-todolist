@@ -3,13 +3,9 @@ import React, { useState } from "react"
 const Context = React.createContext()
 
 const ContextProvider = ({ children }) => {
-    /* --- // --- //  // --- // --- */
     const [listsArray, setListsArray] = useState([])
     const [activeListID, setActiveListID] = useState(0)
-    /* --- // --- //  // --- // --- */
-    const [showTasks, setShowTasks] = useState(false)
 
-    /* --- // --- //  // --- // --- */
     const createList = (inputValue) => ({
         id: Date.now().toString(),
         value: inputValue,
@@ -22,7 +18,6 @@ const ContextProvider = ({ children }) => {
         isCompleted: false
     })
 
-    /* --- // --- //  // --- // --- */
     const addList = (inputValue) => {
         const newList = createList(inputValue)
         setListsArray(prevLists => [...prevLists, newList])
@@ -46,7 +41,6 @@ const ContextProvider = ({ children }) => {
         ))
     }
 
-    /* --- // --- //  // --- // --- */
     const toggleTaskCompletion = (taskID) => {
         setListsArray(prevLists => prevLists.map(list => list.id !== activeListID
             ? list
@@ -80,13 +74,6 @@ const ContextProvider = ({ children }) => {
         ))
     }
 
-    /* --- // --- //  // --- // --- */
-    const animateTasksIn = () => setShowTasks(true)
-
-    const animateTasksOut = () => setShowTasks(false)
-
-    console.log(showTasks)
-    
     return (
         <Context.Provider
             value={{
@@ -99,10 +86,7 @@ const ContextProvider = ({ children }) => {
                 toggleTaskCompletion,
                 deleteTaskFromList,
                 deleteCompletedTasks,
-                deleteAllTasks,
-                showTasks,
-                animateTasksIn,
-                animateTasksOut
+                deleteAllTasks
             }}
         >
             {children}
