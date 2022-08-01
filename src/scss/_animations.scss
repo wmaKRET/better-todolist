@@ -1,51 +1,75 @@
-/* --- // --- // ListItem component animate // --- // --- */
+/* --- // --- // ANIMATION CLASSES // --- // --- */
 
-.animate-list-item {
-    &-enter {
-        opacity: 0;
-        transform: translateY(100%);
+.animate {
+    &-list-item {
+        &-enter {
+            opacity: 0;
+            transform: translateY(100%);
+        }
+    
+        &-enter-active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: $animate;
+        }
+    
+        &-exit {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    
+        &-exit-active {
+            opacity: 0;
+            transform: translateY(200%);
+            transition: $animate;
+        }
     }
 
-    &-enter-active {
-        opacity: 1;
-        transform: translateY(0);
-        transition: $animate;
+    &-tasks {
+        &-enter {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+    
+        &-enter-active {
+            opacity: 1;
+            transform: translateX(0);
+            transition: $animate;
+        }
+    
+        &-exit {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    
+        &-exit-active {
+            opacity: 0;
+            transform: translateX(100%);
+            transition: $animate;
+        }
     }
 
-    &-exit {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    &-exit-active {
-        opacity: 0;
-        transform: translateY(200%);
-        transition: $animate;
-    }
-}
-
-/* --- // --- // Tasks component animate // --- // --- */
-
-.animate-tasks {
-    &-enter {
-        opacity: 0;
-        transform: translateX(100%);
-    }
-
-    &-enter-active {
-        opacity: 1;
-        transform: translateX(0);
-        transition: $animate;
-    }
-
-    &-exit {
-        opacity: 1;
-        transform: translateX(0);
-    }
-
-    &-exit-active {
-        opacity: 0;
-        transform: translateX(100%);
-        transition: $animate;
+    &-task-item {
+        &-enter {
+            opacity: 0;
+            transform: translateY(100%);
+        }
+    
+        &-enter-active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: $animate;
+        }
+    
+        &-exit {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    
+        &-exit-active {
+            opacity: 0;
+            transform: translateY(100%);
+            transition: $animate;
+        }
     }
 }

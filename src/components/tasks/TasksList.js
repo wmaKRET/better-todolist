@@ -1,4 +1,5 @@
 import { useContext } from "react"
+import { CSSTransition, TransitionGroup } from "react-transition-group"
 import { Context } from "../../Context"
 import TaskItem from "./TaskItem"
 
@@ -7,10 +8,13 @@ const TasksList = () => {
     // picks proper list to display its tasks
     const activeList = listsArray.filter(list => list.id === activeListID)
     const taskElements = activeList[0].tasks.map(task => (
-        <TaskItem
+        <CSSTransition
             key={task.id}
-            task={task}
-        />
+            timeout={300}
+            classNames="animate-task-item"
+        >
+            <TaskItem task={task} />
+        </CSSTransition>
     ))
 
     // returns number of taks that needs to be completed
@@ -29,7 +33,9 @@ const TasksList = () => {
                         : `${numberOfTasksRemaining()} tasks remaining`
                 }
             </p>
-            {taskElements}
+            <TransitionGroup>
+                {taskElements}
+            </TransitionGroup>
         </div>
     )
 }
